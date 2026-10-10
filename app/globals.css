@@ -75,19 +75,22 @@ button { font: inherit; color: inherit; }
 .brand h1 { font-size: 1rem; font-weight: 650; }
 .brand p { font-size: 0.8rem; color: var(--muted); }
 .logo {
-  display: grid;
-  place-items: center;
-  width: 36px;
+  display: inline-flex;
+  gap: 1px;
   height: 36px;
+  padding: 0 11px;
+  align-items: center;
   border-radius: 10px;
   background: var(--accent);
   color: var(--on-accent);
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   flex-shrink: 0;
+  white-space: nowrap;
 }
-.logo.large { width: 56px; height: 56px; border-radius: 16px; font-size: 1rem; margin: 0 auto 20px; }
+.logo span { font-weight: 500; }
+.logo.large { height: 52px; padding: 0 20px; border-radius: 16px; font-size: 1.25rem; margin: 0 auto 20px; }
 
 .ghost {
   display: inline-flex;

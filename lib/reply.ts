@@ -28,7 +28,7 @@ export function parseReply(raw: string): ParsedReply {
     return match[1]
       .split("|")
       .map((s) => s.trim().replace(/\s*\(.*\)$/, "")) // sometimes the model adds "(…)" after a heading, drop it
-      .filter((s) => s && s.toLowerCase() !== "none");
+      .filter((s) => s && s.toLowerCase() !== "none" && !/^not known/i.test(s)); // "I don't know" isn't a source
   };
 
   return { text, sources: tag("sources"), followups: tag("followups").slice(0, 3) };
