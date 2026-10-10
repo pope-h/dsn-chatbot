@@ -53,11 +53,14 @@ There are three steps. The app works at every stage, it just gets better.
 
 ### Step 1: ground the bot (`app/api/chat/route.ts`)
 
-Ask the bot "When was DSN founded?" right now. It will confidently give you an answer, and
-it's probably wrong. The bot knows nothing about DSN, it's just guessing.
+Ask the bot "Who is the lead of DSN Abuja?" right now. It will confidently give you a name,
+and it's made up. Ask it again and you'll probably get a different one. The bot knows
+nothing about DSN Abuja, it's just guessing.
 
 Find the `TODO (step 1)` and write the system prompt. Once the bot is told to answer only
-from `data/dsn.md`, ask the same question again. It should now admit it doesn't know.
+from `data/dsn.md`, ask the same question again. It should now admit it doesn't know (the
+file really doesn't say who leads it). Then try "What is DSN Abuja?" and "What is
+overfitting?" to see it answer properly from the file.
 
 ### Step 2: stream the answer (`components/useChat.ts`)
 

@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DSN Assistant",
-  description: "Ask questions about Data Science Nigeria",
+  title: "DSN Abuja Assistant",
+  description: "Ask questions about DSN Abuja and data science",
 };
 
 export const viewport: Viewport = {

@@ -7,10 +7,10 @@ import { useChat } from "./useChat";
 
 // TODO (step 3, customise): swap these for questions about your own topic
 const SUGGESTIONS = [
-  { title: "About DSN", prompt: "What is Data Science Nigeria?" },
-  { title: "Programmes", prompt: "What programmes does DSN run?" },
-  { title: "AI Bootcamp", prompt: "How do I get into the AI Bootcamp?" },
-  { title: "For kids", prompt: "Does DSN have programmes for kids?" },
+  { title: "DSN Abuja", prompt: "What is DSN Abuja and what does it do?" },
+  { title: "Join", prompt: "How do I join the DSN community in Abuja?" },
+  { title: "Bootcamp", prompt: "Tell me about the DSN AI Bootcamp 2026" },
+  { title: "Data science", prompt: "What is data science, and how do I start learning it?" },
 ];
 
 export function Chat() {
@@ -47,11 +47,11 @@ export function Chat() {
     <div className="app">
       <header className="header">
         <div className="brand">
-          <div className="logo" aria-hidden>DSN</div>
+          <Logo />
           <div>
             {/* TODO (step 3, customise): your own name here */}
-            <h1>DSN Assistant</h1>
-            <p>Data Science Nigeria, answered</p>
+            <h1>DSN Abuja Assistant</h1>
+            <p>DSN Abuja and data science, answered</p>
           </div>
         </div>
         {messages.length > 0 && (
@@ -65,8 +65,8 @@ export function Chat() {
         <div className="thread">
           {messages.length === 0 && (
             <div className="empty">
-              <div className="logo large" aria-hidden>DSN</div>
-              <h2>Ask anything about Data Science Nigeria</h2>
+              <Logo large />
+              <h2>Ask anything about DSN Abuja and data science</h2>
               <p>Answers come from a DSN knowledge base, not the model&apos;s memory.</p>
               <div className="suggestions">
                 {SUGGESTIONS.map((s) => (
@@ -112,7 +112,7 @@ export function Chat() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKeyDown}
-            placeholder="Ask about DSN programmes, bootcamps, contacts…"
+            placeholder="Ask about DSN Abuja, the bootcamp, or data science…"
             aria-label="Message"
             maxLength={1000}
             rows={1}
@@ -125,6 +125,15 @@ export function Chat() {
         </div>
         <p className="hint">Answers can be incomplete or out of date.</p>
       </form>
+    </div>
+  );
+}
+
+// The name badge in the header. Swap "DSN" and "Abuja" for your own name in step 3.
+function Logo({ large = false }: { large?: boolean }) {
+  return (
+    <div className={large ? "logo large" : "logo"} aria-label="DSN Abuja" role="img">
+      DSN<span>Abuja</span>
     </div>
   );
 }

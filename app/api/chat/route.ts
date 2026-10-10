@@ -19,10 +19,10 @@ async function buildSystemPrompt(): Promise<string> {
 
   // TODO (step 1): write the system prompt.
   //
-  // Right now the bot has no idea about DSN and will just wing it. Try asking it
-  // "When was DSN founded?" and see what it makes up. Then fix it:
+  // Right now the bot has no idea about DSN Abuja and will just wing it. Try asking it
+  // "Who is the lead of DSN Abuja?" and see what it makes up. Then fix it:
   //
-  //  1. Tell it who it is (the friendly assistant for Data Science Nigeria)
+  //  1. Tell it who it is (the friendly assistant for DSN Abuja)
   //  2. Tell it to answer ONLY from the knowledge base
   //  3. Tell it what to do when the answer isn't there (say so, don't invent anything)
   //  4. Paste `knowledge` in at the bottom, after a "KNOWLEDGE BASE:" label
