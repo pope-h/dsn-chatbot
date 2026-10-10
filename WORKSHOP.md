@@ -27,10 +27,25 @@ Setup eats a surprising amount of workshop time, so let's get it out of the way.
 5. **Check it works.** Run `npm run dev`, open http://localhost:3000 and click one of the
    suggestion buttons. You should get a reply.
 
-Stuck on any of this? Message me before the day and we'll sort it out.
+Stuck on any of this? Message me before the day and we'll sort it out. Even better, join the
+call 15 minutes early on the day and I'll help you get going before we start.
 
 Please don't share your API key or commit `.env.local`. It's already in `.gitignore`, so
 you'd have to go out of your way to do it.
+
+## How the session works (it's online)
+
+I can't see your screen, so a few ground rules help a lot:
+
+- **Keep your mic muted** unless you're asking something. Camera is optional.
+- **Use the chat.** Questions are welcome any time, I'll check it as we go.
+- **Give me a signal.** When I ask "done?" after a step, put a thumbs up in the chat if
+  you're finished, or a 🆘 if you're stuck. I'd rather know than guess.
+- **If you're stuck, post the full error.** Copy the red text from your terminal or the
+  browser instead of describing it, and say which step you're on. A screenshot works too.
+- **Nobody is behind.** If you fall off, I'll post the answer for each step in the chat, so
+  paste it in and carry on with everyone else.
+- The session is recorded, so you can catch up on anything you miss.
 
 ## What we'll do
 
