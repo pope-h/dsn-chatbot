@@ -45,7 +45,7 @@ I can't see your screen, so a few ground rules help a lot:
   browser instead of describing it, and say which step you're on. A screenshot works too.
 - **Nobody is behind.** If you fall off, I'll post the answer for each step in the chat, so
   paste it in and carry on with everyone else.
-- The session is recorded, so you can catch up on anything you miss.
+- If the session is recorded, the link will be shared afterwards so you can catch up.
 
 ## What we'll do
 
