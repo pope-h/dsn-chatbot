@@ -2,41 +2,33 @@
  * POST /api/chat
  * Takes the whole conversation, streams the reply back as plain text.
  *
- * This is the file to spend the most time on in the workshop. The system prompt below
- * is where "grounding" happens: we paste data/dsn.md in and tell the model to stick
- * to it, instead of letting it guess.
+ * STEP 1 of the workshop happens in this file (look for the TODO below).
  */
 
 import { NextRequest, NextResponse } from "next/server";
 import { readFile } from "fs/promises";
 import path from "path";
 import { streamChat, type ChatMessage } from "@/lib/gemini";
-import { ERROR_MARKER } from "@/lib/reply";
 
 const MAX_MESSAGES = 20;
 const MAX_CHARS = 1000;
 
 async function buildSystemPrompt(): Promise<string> {
+  // This reads data/dsn.md, the file with everything we know about DSN
   const knowledge = await readFile(path.join(process.cwd(), "data", "dsn.md"), "utf8");
-  return `You are the friendly assistant for Data Science Nigeria (DSN).
-Answer questions using ONLY the knowledge base below.
 
-Rules:
-- If the answer isn't in the knowledge base, say you don't have that information and
-  suggest datasciencenigeria.org or the relevant contact number. Never invent facts,
-  dates, fees, or links.
-- Mention when information is marked dated or unverified.
-- Keep answers short, clear and welcoming. Use bullet points for lists.
-- If asked something unrelated to DSN, politely steer back to DSN topics.
-- End EVERY reply with these two lines, exactly in this format (the app turns them into buttons):
-  [[sources: <section heading> | <section heading>]]
-  [[followups: <question> | <question> | <question>]]
-  "sources" lists the section headings (the "## ..." lines) your facts came from. Write "none"
-  if you couldn't answer from the knowledge base, and never list the "Not known" section.
-  "followups" gives 2-3 short questions the user might ask next that the knowledge base can answer.
-
-KNOWLEDGE BASE:
-${knowledge}`;
+  // TODO (step 1): write the system prompt.
+  //
+  // Right now the bot has no idea about DSN and will just wing it. Try asking it
+  // "When was DSN founded?" and see what it makes up. Then fix it:
+  //
+  //  1. Tell it who it is (the friendly assistant for Data Science Nigeria)
+  //  2. Tell it to answer ONLY from the knowledge base
+  //  3. Tell it what to do when the answer isn't there (say so, don't invent anything)
+  //  4. Paste `knowledge` in at the bottom, after a "KNOWLEDGE BASE:" label
+  //
+  // Hint: it's one template string, and you can drop `knowledge` into it with ${knowledge}
+  return `You are a helpful assistant.`;
 }
 
 export async function POST(request: NextRequest) {
@@ -70,7 +62,10 @@ export async function POST(request: NextRequest) {
 
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    return NextResponse.json({ error: "GEMINI_API_KEY is not set." }, { status: 500 });
+    return NextResponse.json(
+      { error: "GEMINI_API_KEY is not set. Check your .env.local file." },
+      { status: 500 }
+    );
   }
 
   const systemPrompt = await buildSystemPrompt();
@@ -84,7 +79,7 @@ export async function POST(request: NextRequest) {
         }
       } catch (err) {
         console.error("[chat]", err);
-        controller.enqueue(encoder.encode(ERROR_MARKER)); // UI picks this up and shows "Try again"
+        controller.enqueue(encoder.encode("\n\n[Sorry, something went wrong. Please try again.]"));
       } finally {
         controller.close();
       }

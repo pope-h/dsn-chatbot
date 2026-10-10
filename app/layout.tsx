@@ -13,15 +13,9 @@ export const viewport: Viewport = {
   ],
 };
 
-// Runs before the page paints, otherwise dark-mode people get a white flash on load
-const themeScript = `try{var t=localStorage.getItem("dsn-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}`;
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
