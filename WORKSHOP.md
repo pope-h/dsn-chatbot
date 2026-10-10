@@ -12,7 +12,7 @@ Setup eats a surprising amount of workshop time, so let's get it out of the way.
    version from https://nodejs.org
 2. **Clone the repo and switch to the starter branch**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/pope-h/dsn-chatbot.git
    cd dsn-chatbot
    git checkout workshop-starter
    npm install
