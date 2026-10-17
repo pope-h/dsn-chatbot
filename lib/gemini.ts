@@ -4,8 +4,11 @@
  * Fine to treat as a black box in the session, the interesting bit is the prompt.
  */
 
-const GEMINI_STREAM_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent";
+// gemini-2.5-flash is closed to new keys now, so we use 3.8. If you run out of free requests
+// for the day, you can try another model by setting GEMINI_MODEL in .env.local
+// (the daily limit is per model), e.g. GEMINI_MODEL=gemini-3.5-flash
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
+const GEMINI_STREAM_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:streamGenerateContent`;
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -29,8 +32,8 @@ export async function* streamChat(
       })),
       generationConfig: {
         temperature: 0.3, // keep it low, we want it sticking to the facts not being creative
-        maxOutputTokens: 1024,
-        thinkingConfig: { thinkingBudget: 0 }, // skips the "thinking" step so the first words show up quicker
+        maxOutputTokens: 2048, // newer models think a bit first and that counts here too, so leave room
+        thinkingConfig: { thinkingBudget: 0 }, // asks it to skip "thinking" so the first words show up quicker
       },
     }),
   });
