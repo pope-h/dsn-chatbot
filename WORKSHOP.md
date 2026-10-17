@@ -10,11 +10,10 @@ Setup eats a surprising amount of workshop time, so let's get it out of the way.
 
 1. **Node.js 18.17 or newer.** Run `node -v` to check. If it's older, install the LTS
    version from https://nodejs.org
-2. **Clone the repo and switch to the starter branch**
+2. **Clone just the starter branch** (that's the only one you need)
    ```bash
-   git clone https://github.com/pope-h/dsn-chatbot.git
+   git clone --branch workshop-starter --single-branch https://github.com/pope-h/dsn-chatbot.git
    cd dsn-chatbot
-   git checkout workshop-starter
    npm install
    ```
 3. **Get a free Gemini API key** at https://aistudio.google.com/apikey (you need a Google
@@ -78,7 +77,7 @@ the response as it arrives, so the words appear as they're written.
 
 The finished version lives on the `main` branch and has a few extras: source tags under
 each answer, suggested follow-up questions, thumbs up/down, a dark mode toggle and a Stop
-button. Have a look at `lib/reply.ts` on `main` to see how the source tags work, and try
+button. You can browse it on GitHub (switch the branch dropdown to `main`) without downloading anything. Have a look at `lib/reply.ts` there to see how the source tags work, and try
 adding one of them to your own version.
 
 ## Things that commonly go wrong
