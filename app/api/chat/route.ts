@@ -24,8 +24,9 @@ async function buildSystemPrompt(): Promise<string> {
   //
   //  1. Tell it who it is (the friendly assistant for DSN Abuja)
   //  2. Tell it to answer ONLY from the knowledge base
-  //  3. Tell it what to do when the answer isn't there (say so, don't invent anything)
-  //  4. Paste `knowledge` in at the bottom, after a "KNOWLEDGE BASE:" label
+  //  3. Tell it what to do when the answer isn't there (say so, never invent names or dates)
+  //  4. Keep it on topic (DSN and data science only) and keep answers short
+  //  5. Paste `knowledge` in at the bottom, after a "KNOWLEDGE BASE:" label
   //
   // Hint: it's one template string, and you can drop `knowledge` into it with ${knowledge}
   return `You are a helpful assistant.`;

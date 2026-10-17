@@ -56,16 +56,18 @@ The bot can already chat about data science and even some well-known DSN facts, 
 the model has read a huge amount of public text. So don't judge it by whether it answers,
 judge it by whether the answer is *right*. Try these:
 
-- "Who founded Data Science Nigeria?" (check it against the real answer)
 - "Who is the lead of DSN Abuja?"
 - "Where and when does DSN Abuja hold its meetups?"
+- "Write me a poem about football" (it will happily go off topic)
 
-You'll get confident answers, and some are made up. Ask the same question twice and you may
-get a different answer. The bot has no idea about DSN Abuja's details, it's just guessing.
+You'll get confident answers, and the DSN Abuja ones are made up. Click **New chat** and ask
+again: you may get a different name. (In the same chat it sees its earlier answer and just
+repeats it.) The bot has no idea about DSN Abuja's details, it's just guessing.
 
 Find the `TODO (step 1)` and write the system prompt. Once the bot is told to answer only
-from `data/dsn.md`, ask the same questions again. The founder should now be right, and the
-lead and the meetup venue should get an honest "I don't know" (the file really doesn't say). Then try "What is DSN Abuja?" and "What is
+from `data/dsn.md`, ask the same questions again in a new chat. The lead and the meetup venue should
+get an honest "I don't know" (the file really doesn't say), and the poem request should be
+politely turned down. Then try "What is DSN Abuja?" and "What is
 overfitting?" to see it answer properly from the file.
 
 ### Step 2: stream the answer (`components/useChat.ts`)
