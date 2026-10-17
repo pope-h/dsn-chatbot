@@ -29,6 +29,9 @@ Setup eats a surprising amount of workshop time, so let's get it out of the way.
 Stuck on any of this? Message me before the day and we'll sort it out. Even better, join the
 call 15 minutes early on the day and I'll help you get going before we start.
 
+The free key only allows a small number of requests per day, so please don't burn through it
+before the session. One test message to check it works is plenty.
+
 Please don't share your API key or commit `.env.local`. It's already in `.gitignore`, so
 you'd have to go out of your way to do it.
 
@@ -95,7 +98,9 @@ adding one of them to your own version.
 |---|---|
 | `GEMINI_API_KEY is not set` | `.env.local` is missing or has the wrong name. Restart `npm run dev` after editing it. |
 | `Gemini API error 503` | Google's side is busy. Wait a few seconds and ask again. |
-| `Gemini API error 429` | You've hit the free limit. Wait a minute. |
+| `Gemini API error 429` and "retry in 9h..." | You've used your free requests for the day (it can be as low as 20). Add `GEMINI_MODEL=gemini-3.5-flash` to `.env.local` (the limit is per model), or make a key in a **new project** in AI Studio. A new key in the same project shares the same limit. |
+| `Gemini API error 429` and "retry in a few seconds" | Too many requests in a minute. Wait a moment. |
+| `Gemini API error 404` "no longer available" | The model was retired. Set `GEMINI_MODEL` in `.env.local` to the model the error message suggests, then restart `npm run dev`. |
 | `Gemini API error 400` or `403` | The key is wrong or was copied with a space on the end. |
 | Changed `dsn.md` but the bot hasn't noticed | Send a fresh message, it's re-read on every request. If it still hasn't, restart the dev server. |
 | Port 3000 is already in use | `npm run dev -- -p 3001` |
