@@ -52,13 +52,20 @@ There are three steps. The app works at every stage, it just gets better.
 
 ### Step 1: ground the bot (`app/api/chat/route.ts`)
 
-Ask the bot "Who is the lead of DSN Abuja?" right now. It will confidently give you a name,
-and it's made up. Ask it again and you'll probably get a different one. The bot knows
-nothing about DSN Abuja, it's just guessing.
+The bot can already chat about data science and even some well-known DSN facts, because
+the model has read a huge amount of public text. So don't judge it by whether it answers,
+judge it by whether the answer is *right*. Try these:
+
+- "Who founded Data Science Nigeria?" (check it against the real answer)
+- "Who is the lead of DSN Abuja?"
+- "Where and when does DSN Abuja hold its meetups?"
+
+You'll get confident answers, and some are made up. Ask the same question twice and you may
+get a different answer. The bot has no idea about DSN Abuja's details, it's just guessing.
 
 Find the `TODO (step 1)` and write the system prompt. Once the bot is told to answer only
-from `data/dsn.md`, ask the same question again. It should now admit it doesn't know (the
-file really doesn't say who leads it). Then try "What is DSN Abuja?" and "What is
+from `data/dsn.md`, ask the same questions again. The founder should now be right, and the
+lead and the meetup venue should get an honest "I don't know" (the file really doesn't say). Then try "What is DSN Abuja?" and "What is
 overfitting?" to see it answer properly from the file.
 
 ### Step 2: stream the answer (`components/useChat.ts`)
